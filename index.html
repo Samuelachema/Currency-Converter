@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#3E4EB8">
+
+    <title>Currency Converter</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Currency Converter">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <!-- Windows -->
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <link rel="icon"
+         type="image/png"
+         href="images/icons/icon-144x144.png">
+  </head>
+  <body>
+
+    <header class="header">
+	  
+      <h1 style="text-align: center;" class="header__title">CURRENCY CONVERTER</h1>
+    </header>
+
+    <main class="main">
+      <div style="text-align: center;" class="container">
+
+        <div class="card">
+         
+			<form action="#" id="sky-form" class="sky-form" novalidate="novalidate">
+						
+						<fieldset>
+							<div class="row">
+								<section class="col col-6">
+									<label class="input">
+										<input type="number" name="amount" id="amount" placeholder="" oninput="resetSelect()">
+									</label>
+								</section>
+							
+								<section class="col col-6" onchange="resetSelect()">
+									<label class="select">
+										<select name="fromcur" id="fromcur">
+										
+										</select>
+										<i></i>
+									</label>
+								</section>
+								</div>					
+						</fieldset>
+						
+						<header>
+							EQUALS
+						</header>
+
+						<fieldset>
+							<div class="row">
+								<section class="col col-6">
+									<label class="input" >
+										<input type="text" name="resultamount" id= "resultamount" disabled="true">
+									</label>
+								</section>
+							
+								<section class="col col-6">
+									<label class="select">
+										<select name="tocur" name="tocur" id="tocur">
+										
+										</select>
+										<i></i>
+									</label>
+								</section>
+								</div>
+						</fieldset>										
+					</form>
+				
+									<h4>Select currency to convert</h4>
+        </div>
+
+        
+      </div>
+    </main>
+
+    <script type="text/javascript" src="scripts/app.js"></script>
+	<script>
+		function resetSelect(){
+			document.getElementById("tocur").selectedIndex = 0;
+			document.getElementById("resultamount").setAttribute('value',"");
+		}
+    
+	</script>
+  </body>
+</html>
