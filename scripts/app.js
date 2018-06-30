@@ -10,7 +10,7 @@ function getCurrencies() {
   fetch(url).then(function(response) {
     return response.json();
   }).then(function(data) {      
-    const values = Object.keys(data.results).sort();    
+    const values = data.results;    
     let options = `<option value="0">Select Currency</option>`;
  
       for(var key in values){
