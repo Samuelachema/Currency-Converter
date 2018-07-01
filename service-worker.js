@@ -32,8 +32,22 @@ self.addEventListener('activate', e=>{
 }
 );
 
+self.addEventListener('fetch', function(event){    
+    console.log("Fetch Event");
+    var requestUrl = new URL(event.request.url);
 
-self.addEventListener('fetch', event=>{
-    event.respondWith(caches.match(event.request).then(response=>response || fetch(event.request)), );
-}
-);
+    if (requestUrl.origin === location.origin) {
+        if (requestUrl.pathname === '/') {
+            event.respondWith(caches.match('/'));
+            return;
+
+        }
+    }
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+          if (response) return response;
+          return fetch(event.request);        
+        })        
+      );
+ });
+
