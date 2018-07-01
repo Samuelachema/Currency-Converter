@@ -89,11 +89,11 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 			let tx = db.transaction("curconstore", "readwrite");
 			let store = tx.objectStore("curconstore");
 			let dbData = store.get(query);
-			dbData.onerror = function () {
+			dbData.onerror = function (e) {
 			document.getElementById("resultamount").setAttribute('value',"There is no Internet connection");
 			}
 
-			dbData.onsuccess = function () {
+			dbData.onsuccess = function (e) {
 			let dbRatio = dbData.result.ratio;
 			document.getElementById("resultamount").setAttribute('value',(amount * dbRatio).toFixed(2));
 			}
