@@ -1,11 +1,11 @@
 var cacheName = 'curcon-stattic-v3';
 var filesToCache = [
-  '/',
+  './',
    './manifest.json',
-  '/index.html',
-  '/scripts/app.js',
-  '/styles/inline.css',
-  '/favicon.ico'
+  './index.html',
+  './scripts/app.js',
+  './styles/inline.css',
+  './favicon.ico'
 ];
 
 
