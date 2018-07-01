@@ -1,10 +1,10 @@
-var cacheName = 'curcon-stattic-v2';
+var cacheName = 'curcon-stattic-v3';
 var filesToCache = [
   '/',
   '/index.html',
   '/scripts/app.js',
   '/styles/inline.css',
-  '/manifest.json',
+  'https://samuelachema.github.io/Currency-Converter/manifest.json',
   'https://free.currencyconverterapi.com/api/v5/currencies',
   '/favicon.ico'
 ];
