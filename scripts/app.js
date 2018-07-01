@@ -38,34 +38,25 @@ function saveToIdb(data){
 	  tx,
 	  store,
 	  index;
-
 	  request.onupgradeneeded = function(e) {
 		let db = request.result,
 			store = db.createObjectStore("curconstore", {
 			  keyPath: "query"})          
 	  };
-
 	  request.onerror = function(e) {
-		console.log("Booo:" + e.target.errorCode);
+		console.log("Error: " + e.target.errorCode);
 	  }
-
 	  request.onsuccess = function(e) {
 		db = request.result;
 		tx = db.transaction("curconstore", "readwrite");
 		store = tx.objectStore("curconstore");
 
 		db.onerror = function(e) {
-		  console.log("Booo:" + e.target.errorCode);
+		  console.log("Error: " + e.target.errorCode);
 		}
-
 		let putData = {"query" : query, "ratio":data[query]};
-
 		store.add(putData);
-
-		console.log(putData);  
-		
 	  }
-	console.log("The data is: " + data[query]);
 
 }
 
@@ -83,7 +74,6 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 		query = `${fromcur}_${tocur}`;
 		const url = `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`;
 		
-		//console.log(url);
 		fetch(url).then(function(response) {
 		return response.json();
 		}).then(function(data) {
@@ -91,7 +81,7 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 		const ratio = data[query];
 		document.getElementById("resultamount").setAttribute('value',(amount * ratio).toFixed(2));
 		}).catch(function(){
-			console.log("You are offline")     
+			console.log("Application offline")     
 			let req = indexedDB.open("curcon", 1);
 			req.onsuccess = function (e) {
 			let db = e.target.result;
@@ -99,18 +89,14 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 			let store = tx.objectStore("curconstore");
 			let dbData = store.get(query);
 			dbData.onerror = function () {
-			document.getElementById("resultamount").setAttribute('value',"Offline conversion failed!");
+			document.getElementById("resultamount").setAttribute('value',"There is no Internet connection");
 			}
 
 			dbData.onsuccess = function () {
 			let dbRatio = dbData.result.ratio;
-			document.getElementById("resultamount").setAttribute('value',"Offline Results : " + (amount * dbRatio).toFixed(2));
+			document.getElementById("resultamount").setAttribute('value',(amount * dbRatio).toFixed(2));
 			}
 		  }    
 	  })  
 	}	
 });
-
-
-
-
