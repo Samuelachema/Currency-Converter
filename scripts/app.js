@@ -75,6 +75,10 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 		const url = `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`;
 		
 		fetch(url).then(function(response) {
+		if (response.status !== 200) {
+                console.log("Oops");
+                return;
+            }
 		return response.json();
 		}).then(function(data) {
 		saveToIdb(data);
