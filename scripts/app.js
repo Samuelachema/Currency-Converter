@@ -15,8 +15,9 @@ function getCurrencies() {
  
       for(var key in values){
       const currencyId = key;
-      const currencyItem = values[key].currencyName;      
-      options += `<option value="${currencyId}">${currencyItem}</option>`;                 
+      const currencyName = values[key].currencyName;
+      const currencySymbol = values[key].currencySymbol;
+      options += `<option value="${currencyId}">${currencyName}(${currencySymbol})</option>`;                 
     } 
  
   document.getElementById("fromcur").innerHTML = options;
