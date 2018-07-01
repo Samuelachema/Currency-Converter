@@ -33,7 +33,7 @@ self.addEventListener('activate', e=>{
 );
 
 self.addEventListener('fetch', function(event){    
-    console.log("Fetch Event");
+    console.log('[Service Worker] Fetch', event.request.url);
     var requestUrl = new URL(event.request.url);
 
     if (requestUrl.origin === location.origin) {
