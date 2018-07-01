@@ -5,7 +5,8 @@ var filesToCache = [
   './index.html',
   './scripts/app.js',
   './styles/inline.css',
-  './favicon.ico'
+  './favicon.ico',
+  'https://free.currencyconverterapi.com/api/v5/currencies'
 ];
 
 
