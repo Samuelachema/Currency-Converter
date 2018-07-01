@@ -89,7 +89,8 @@ document.getElementById("tocur").addEventListener('change', (e) => {
 			let store = tx.objectStore("curconstore");
 			let dbData = store.get(query);
 			dbData.onerror = function (e) {
-			document.getElementById("resultamount").setAttribute('value',"There is no Internet connection");
+				document.getElementById("amount").setAttribute('value',"");
+				document.getElementById("resultamount").setAttribute('value',"There is no Internet connection");
 			}
 
 			dbData.onsuccess = function (e) {
